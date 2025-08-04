@@ -320,7 +320,7 @@ const MainPage = () => {
       {/* Navbar */}
       <div className="navbar">
         <img 
-          src="/src/assets/images/logo.png" 
+          src="/logo_full.png" 
           alt="Immigration Portal Logo" 
           className="logo"
         />

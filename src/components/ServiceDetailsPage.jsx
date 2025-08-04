@@ -20,7 +20,7 @@ const ServiceDetailsPage = () => {
         <div className="header-content">
           <div className="logo-container">
             <img 
-              src="/src/assets/images/logo.png" 
+              src="/logo_full.png" 
               alt="Immigration Portal Logo" 
               className="logo"
             />

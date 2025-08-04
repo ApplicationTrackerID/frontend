@@ -39,7 +39,7 @@ const LandingPage = () => {
         {/* Logo - replace src with your actual logo path */}
         <div className="logo-container">
           <img 
-            src="/src/assets/images/logo.png" 
+            src="/logo_full.png" 
             alt="Immigration Portal Logo" 
             className="logo"
           />
