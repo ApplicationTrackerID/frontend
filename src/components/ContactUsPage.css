@@ -1,0 +1,195 @@
+/* Mobile-first design for Contact Us Page */
+.contact-us-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.header-section {
+  background-color: #1D2F5D;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.message {
+  background-color: #d7f8f8;
+  color: #1c725e;
+  border: 1px solid #61c4b2;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 9px;
+  text-align: center;
+}
+
+.header-section .logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header-section .logo {
+  max-width: 150px;
+  height: auto;
+  width: 100%;
+}
+
+/* Main Section */
+.main-section {
+  background-color: #ffffff;
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+  max-width: 600px;
+  width: 100%;
+}
+
+.page-heading {
+  color: #1D2F5D;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.contact-form .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-textarea {
+  height: auto;
+  resize: vertical;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: #2F4E87;
+  box-shadow: 0 0 0 3px rgba(47, 78, 135, 0.1);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: #888;
+}
+
+/* Send Message Button */
+.send-message-btn {
+  background-color: #2F4E87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.send-message-btn:hover {
+  background-color: #3a5a96;
+  transform: translateY(-2px);
+}
+
+.send-message-btn:active {
+  transform: translateY(0);
+}
+
+/* Track Application Button */
+.track-application-btn {
+  background-color: #2F4E87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 100%;
+}
+
+.track-application-btn:hover {
+  background-color: #3a5a96;
+  transform: translateY(-2px);
+}
+
+.track-application-btn:active {
+  transform: translateY(0);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .header-section {
+    padding: 30px 40px;
+  }
+  
+  .header-section .logo {
+    max-width: 200px;
+  }
+  
+  .main-section {
+    padding: 60px 40px;
+  }
+  
+  .page-heading {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .form-input, .form-textarea {
+    font-size: 18px;
+    padding: 14px 24px;
+  }
+  
+  .send-message-btn, .track-application-btn {
+    font-size: 20px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .header-section {
+    padding: 40px 60px;
+  }
+  
+  .header-section .logo {
+    max-width: 250px;
+  }
+  
+  .main-section {
+    padding: 80px 60px;
+  }
+  
+  .page-heading {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  
+  .send-message-btn, .track-application-btn {
+    font-size: 22px;
+  }
+}

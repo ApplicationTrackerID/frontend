@@ -1,0 +1,147 @@
+/* Mobile-first design for Landing Page */
+.landing-page {
+  min-height: 100vh;
+  background-color: #1D2F5D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.landing-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Logo Container */
+.logo-container {
+  margin-bottom: 40px;
+}
+
+.logo {
+  max-width: 200px;
+  height: auto;
+  width: 100%;
+}
+
+/* Description */
+.description {
+  margin-bottom: 40px;
+}
+
+.description p {
+  color: #ffffff;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 0;
+  font-weight: 400;
+}
+
+/* Track Application Button */
+.track-application-btn {
+  background-color: #2F4E87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+  max-width: 280px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.track-application-btn:hover {
+  background-color: #3a5a96;
+  transform: translateY(-2px);
+}
+
+.track-application-btn:active {
+  transform: translateY(0);
+}
+
+/* Learn More Link */
+.learn-more-link {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 8px;
+  transition: color 0.3s ease;
+}
+
+.learn-more-link:hover {
+  color: #cccccc;
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .landing-page {
+    padding: 40px;
+  }
+  
+  .landing-content {
+    max-width: 700px;
+  }
+  
+  .logo {
+    max-width: 250px;
+  }
+  
+  .description p {
+    font-size: 18px;
+  }
+  
+  .track-application-btn {
+    font-size: 20px;
+    padding: 18px 40px;
+    width: auto;
+    min-width: 280px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .landing-page {
+    padding: 60px;
+  }
+  
+  .landing-content {
+    max-width: 800px;
+  }
+  
+  .logo-container {
+    margin-bottom: 50px;
+  }
+  
+  .logo {
+    max-width: 300px;
+  }
+  
+  .description {
+    margin-bottom: 50px;
+  }
+  
+  .description p {
+    font-size: 20px;
+    line-height: 1.7;
+  }
+  
+  .track-application-btn {
+    font-size: 22px;
+    padding: 20px 48px;
+  }
+  
+  .learn-more-link {
+    font-size: 16px;
+  }
+}

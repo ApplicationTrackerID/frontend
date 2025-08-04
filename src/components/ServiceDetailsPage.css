@@ -1,0 +1,177 @@
+/* Mobile-first design for Service Details Page */
+.service-details-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header Section */
+.header-section {
+  background-color: #1D2F5D;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.header-section .logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.header-section .logo {
+  max-width: 150px;
+  height: auto;
+  width: 100%;
+}
+
+/* Main Section */
+.main-section {
+  background-color: #ffffff;
+  flex: 1;
+  padding: 40px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.main-content {
+  max-width: 800px;
+  width: 100%;
+}
+
+.page-heading {
+  color: #1D2F5D;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.content-text {
+  margin-bottom: 40px;
+}
+
+.content-text p {
+  color: #333333;
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: justify;
+}
+
+.content-text p:last-child {
+  margin-bottom: 0;
+}
+
+/* Email Link */
+.email-link {
+  background: none;
+  border: none;
+  color: #2F4E87;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+  padding: 0;
+  transition: color 0.3s ease;
+}
+
+.email-link:hover {
+  color: #1D2F5D;
+}
+
+/* Track Application Button */
+.track-application-btn {
+  background-color: #2F4E87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  display: block;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.track-application-btn:hover {
+  background-color: #3a5a96;
+  transform: translateY(-2px);
+}
+
+.track-application-btn:active {
+  transform: translateY(0);
+}
+
+/* Tablet styles */
+@media (min-width: 768px) {
+  .header-section {
+    padding: 30px 40px;
+  }
+  
+  .header-section .logo {
+    max-width: 200px;
+  }
+  
+  .main-section {
+    padding: 60px 40px;
+  }
+  
+  .page-heading {
+    font-size: 32px;
+    margin-bottom: 40px;
+  }
+  
+  .content-text p {
+    font-size: 18px;
+    margin-bottom: 24px;
+  }
+  
+  .track-application-btn {
+    font-size: 20px;
+    padding: 18px 40px;
+  }
+}
+
+/* Desktop styles */
+@media (min-width: 1024px) {
+  .header-section {
+    padding: 40px 60px;
+  }
+  
+  .header-section .logo {
+    max-width: 250px;
+  }
+  
+  .main-section {
+    padding: 80px 60px;
+  }
+  
+  .page-heading {
+    font-size: 36px;
+    margin-bottom: 50px;
+  }
+  
+  .content-text {
+    margin-bottom: 50px;
+  }
+  
+  .content-text p {
+    font-size: 18px;
+    line-height: 1.7;
+    margin-bottom: 26px;
+  }
+  
+  .track-application-btn {
+    font-size: 22px;
+    padding: 20px 48px;
+  }
+}
