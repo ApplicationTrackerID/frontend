@@ -28,7 +28,7 @@ const MainPage = () => {
           return;
         }
 
-        const response = await fetch(`http://127.0.0.1:8000/user/me`, {
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -227,7 +227,7 @@ const MainPage = () => {
       contact_number: userInfo.contactNumber,
       alternative_contact: userInfo.alternativeContact,
     }
-    const response = await fetch('http://127.0.0.1:8000/user/edit', {
+    const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/edit`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
