@@ -19,12 +19,12 @@
 }
 
 /* Logo Container */
-.logo-container {
+/* .logo-container {
   margin-bottom: 40px;
-}
+} */
 
 .logo {
-  max-width: 200px;
+  max-width: 340px;
   height: auto;
   width: 100%;
 }

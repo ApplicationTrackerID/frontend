@@ -13,12 +13,16 @@ const ServiceDetailsPage = () => {
     navigate('/contact-us');
   };
 
+  const handleLogoClick = () => {
+    navigate('/')
+  }
+
   return (
     <div className="service-details-page">
       {/* Header Section */}
       <div className="header-section">
         <div className="header-content">
-          <div className="logo-container">
+          <div className="logo-container" onClick={handleLogoClick}>
             <img 
               src="/logo_full.png" 
               alt="Immigration Portal Logo" 

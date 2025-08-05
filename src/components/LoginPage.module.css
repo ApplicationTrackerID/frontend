@@ -1,0 +1,367 @@
+/* Mobile-first design for Login Page
+.login-page {
+  min-height: 100vh;
+  background-color: #1D2F5D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.login-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
+}
+
+.logo-container {
+  margin-bottom: 40px;
+}
+
+.logo {
+  max-width: 150px;
+  height: auto;
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #ffffff;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #2F4E87;
+  box-shadow: 0 0 0 3px rgba(47, 78, 135, 0.1);
+}
+
+.form-input::placeholder {
+  color: #888;
+}
+
+.login-btn {
+  background-color: #2F4E87;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 32px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-bottom: 20px;
+  width: 100%;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.login-btn:hover {
+  background-color: #3a5a96;
+  transform: translateY(-2px);
+}
+
+.login-btn:active {
+  transform: translateY(0);
+}
+
+.contact-us-link {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 14px;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.contact-us-link:hover {
+  color: #cccccc;
+}
+
+@media (min-width: 768px) {
+  .login-content {
+    max-width: 500px;
+  }
+
+  .logo {
+    max-width: 200px;
+  }
+
+  .form-input {
+    font-size: 18px;
+  }
+
+  .login-btn {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .login-content {
+    max-width: 500px;
+  }
+
+  .logo {
+    max-width: 300px;
+  }
+
+  .form-input {
+    font-size: 18px;
+    padding: 18px 24px;
+  }
+
+  .login-btn {
+    font-size: 20px;
+    padding: 18px 40px;
+  }
+
+  .contact-us-link {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .login-content {
+    max-width: 600px;
+  }
+
+  .logo {
+    max-width: 350px;
+  }
+
+  .description p {
+    font-size: 20px;
+  }
+
+  .form-input {
+    font-size: 20px;
+    padding: 20px 28px;
+  }
+
+  .login-btn {
+    font-size: 24px;
+    padding: 20px 48px;
+  }
+
+  .contact-us-link {
+    font-size: 18px;
+  }
+} */
+/* Container fills full viewport */
+.container {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background-color: #000; /* fallback background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Background image initial style */
+.bgImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  max-width: 100vw;
+  max-height: 100vh;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 1;
+  object-fit: contain;
+  transition: transform 2s ease, opacity 2s ease;
+  z-index: 1;
+}
+
+/* After animation: zoom in and fade */
+.bgImageZoomed {
+  transform: translate(-50%, -50%) scale(1.5);
+  opacity: 0.2;
+}
+
+/* Overlay container for logo and form */
+.overlay {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 1s ease, transform 1s ease;
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  color: white;
+}
+
+/* When animation done, show overlay */
+.overlayVisible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Logo styling */
+.logo {
+  width: 350px;
+  margin-bottom: 30px;
+  user-select: none;
+}
+
+/* Form styling */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.errorMessage {
+  margin-top: 10px;
+  color: #ff6666;
+  font-size: 0.9rem;
+  user-select: none;
+  text-align: center;
+}
+
+.input {
+  background-color: transparent;
+  border: 1px solid #bbb;      /* subtle grey border */
+  color: #eee;                /* light text on dark bg */
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 3px;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-shadow: none;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Simple focus effect */
+.input:focus {
+  border-color: #666;         /* darker grey */
+  background-color: rgba(255,255,255,0.05);
+  box-shadow: none;
+  color: #fff;
+}
+
+.input::placeholder {
+  color: #999;
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #666;     /* subdued border */
+  color: #ccc;
+  padding: 10px 12px;
+  font-size: 1rem;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: normal;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.button:hover {
+  background-color: #666;
+  color: #eee;
+}
+
+.passwordWrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Make sure input fills wrapper */
+.passwordWrapper .input {
+  width: 100%;
+  padding-right: 40px; /* room for icon inside */
+  box-sizing: border-box;
+}
+
+.showHideIcon {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #bbb;
+  font-size: 1.1rem;
+  user-select: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1em; /* icon height */
+  width: 1.5em; /* icon width */
+}
+
+.showHideIcon:hover,
+.showHideIcon:focus {
+  color: #888;
+  outline: none;
+}
+
+/* Contact Us link below button */
+.contactLink {
+  /* display: block; */
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #999;
+  border: none;
+  background:none;
+  text-decoration: none;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.contactLink:hover,
+.contactLink:focus {
+  color: #ccc;
+  text-decoration: underline;
+  outline: none;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 480px) {
+  .logo {
+    width: 300px;
+    margin-bottom: 20px;
+  }
+
+  .input {
+    font-size: 0.9rem;
+  }
+
+  .button {
+    font-size: 1rem;
+  }
+  .bgImageZoomed {
+    transform: translate(-70%, -50%) scale(3.17);
+  }
+}

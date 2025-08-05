@@ -5,6 +5,14 @@
   flex-direction: column;
 }
 
+.loader{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding-bottom: 15px;
+}
+
 /* Header Section */
 .header-section {
   background-color: #1D2F5D;
@@ -26,7 +34,7 @@
   border-radius: 4px;
   padding: 12px;
   margin-bottom: 20px;
-  font-size: 9px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -36,7 +44,7 @@
 }
 
 .header-section .logo {
-  max-width: 150px;
+  max-width: 250px;
   height: auto;
   width: 100%;
 }

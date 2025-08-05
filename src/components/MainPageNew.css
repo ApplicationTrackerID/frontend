@@ -5,18 +5,42 @@
   min-height: 100vh;
 }
 
+.loading{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.saving{
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.edit{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
 /* Navbar */
 .navbar {
   background-color: #1D2F5D;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   padding: 10px 20px;
   color: #ffffff;
 }
 
 .navbar .logo {
-  max-width: 150px;
+  max-width: 250px;
   height: auto;
 }
 
@@ -35,7 +59,7 @@
   border: 1px solid #61c4b2;
   border-radius: 4px;
   padding: 12px;
-  margin-bottom: 20px;
+  /* margin-bottom: 20px; */
   font-size: 9px;
   text-align: center;
 }
@@ -91,6 +115,10 @@
   box-sizing: border-box;
 }
 
+/* .form-group input:disabled {
+  background-color: #e8e5e5c6;
+} */
+
 .button-group {
   display: flex;
   gap: 10px;
@@ -122,14 +150,14 @@
 }
 
 .progress-trail {
-  width: 90%;
+  width: 95%;
   max-width: 800px;
   margin-top: 20px;
   position: relative;
 }
 
 /* Vertical connecting line */
-.progress-trail::before {
+/* .progress-trail::before {
   content: "";
   position: absolute;
   left: 24px;
@@ -145,6 +173,21 @@
   align-items: flex-start;
   margin-bottom: 30px;
   position: relative;
+} */
+
+.progress-step::before {
+  content: "";
+  position: absolute;
+  left: 24px;
+  top: 0;
+  bottom: 170px; /* extend below each step */
+  width: 2px;
+  background-color: #ddd;
+  z-index: 1;
+}
+
+.progress-step:last-child::before {
+  display: none;
 }
 
 .progress-step:last-child .progress-trail::before {
@@ -219,6 +262,7 @@
   border: 1px solid #e9ecef;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 20px;
 }
 
 .step-header {
@@ -241,6 +285,7 @@
   font-size: 12px;
   font-weight: 600;
   text-transform: capitalize;
+  text-align: center;
 }
 
 .step-icon.status-complete {
@@ -313,13 +358,37 @@
   box-shadow: 0 0 0 3px rgba(47, 78, 135, 0.1);
 }
 
+footer{
+  background-color: #1D2F5D;
+  /* color: #ffffff; */
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px 0;
+  min-height: 100px;
+}
+
+.contact-us{
+  background: none;
+  border: none;
+  color: #ffffff;
+}
+
+.contact-us:hover{
+  color: rgba(255, 255, 255, 0.2);
+  text-decoration: underline;
+}
+
 @media (min-width: 768px) {
   .navbar {
     padding: 15px 30px;
   }
   
   .navbar .logo {
-    max-width: 200px;
+    max-width: 150px;
   }
   
   .subsection {
@@ -328,6 +397,11 @@
   
   .progress-trail {
     width: 80%;
+  }
+
+  .progress-step::before {
+    
+    bottom: 190px;
   }
   
   .step-header h4 {
@@ -341,7 +415,7 @@
   }
   
   .navbar .logo {
-    max-width: 250px;
+    max-width: 200px;
   }
   
   .logout-button {

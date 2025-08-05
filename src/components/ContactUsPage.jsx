@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import './ContactUsPage.css';
+import styles from './ContactUsPage.module.css';
+import { BeatLoader } from 'react-spinners';
 
 const ContactUsPage = () => {
   const navigate = useNavigate();
@@ -10,6 +11,9 @@ const ContactUsPage = () => {
     message: ''
   });
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+  // const [error, setError] = useState('');
+
 
 
   const handleInputChange = (e) => {
@@ -21,13 +25,14 @@ const ContactUsPage = () => {
   };
 
   const handleSendMessage = async (e) => {
+    try{
     e.preventDefault();
-    // TODO: Implement API call to send message here
     const data = {
       name: formData.name,
       email: formData.email,
       message: formData.message
     }
+    setLoading(true);
     const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/contact`, {
       method: 'POST',
       headers: {
@@ -38,43 +43,52 @@ const ContactUsPage = () => {
     const result = await response.json();
     console.log(result)
     if (result.message){
-      setMessage(result.message);
+      setMessage('Message sent');
     }
     console.log('Sending message:', formData);
-    // For now, just log the form data - will implement actual API call later
+  }catch{
+    console.log('Error sending message')
+  }
+  finally{
+    setLoading(false);
+  }
   };
 
   const handleTrackApplication = () => {
     navigate('/login');
   };
 
+  const handleLogoClick = () => {
+    navigate('/')
+  }
+
   return (
-    <div className="contact-us-page">
+    <div className={styles["contact-us-page"]}>
       {/* Header Section */}
-      <div className="header-section">
-        <div className="header-content">
-          <div className="logo-container">
+      <div className={styles["header-section"]}>
+        <div className={styles["header-content"]}>
+          <div className={styles["logo-container"]} onClick={handleLogoClick}>
             <img 
               src="/logo_full.png" 
               alt="Immigration Portal Logo" 
-              className="logo"
+              className={styles["logo"]}
             />
           </div>
         </div>
       </div>
 
       {/* Main Section */}
-      <div className="main-section">
-        <div className="main-content">
+      <div className={styles["main-section"]}>
+        <div className={styles["main-content"]}>
           
-          <form className="contact-form" onSubmit={handleSendMessage}>
+          <form className={styles["contact-form"]} onSubmit={handleSendMessage}>
             {/* Your Name Field */}
             {message && (
-            <div className="message">
+            <div className={styles["message"]}>
               {message}
             </div>
           )}
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <input
                 type="text"
                 id="name"
@@ -82,13 +96,14 @@ const ContactUsPage = () => {
                 value={formData.name}
                 onChange={handleInputChange}
                 placeholder="Your Name"
-                className="form-input"
+                className={styles["form-input"]}
                 required
+                disabled={loading}
               />
             </div>
 
             {/* Your Email Field */}
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <input
                 type="email"
                 id="email"
@@ -96,38 +111,42 @@ const ContactUsPage = () => {
                 value={formData.email}
                 onChange={handleInputChange}
                 placeholder="Your Email"
-                className="form-input"
+                className={styles["form-input"]}
                 required
+                disabled={loading}
               />
             </div>
 
             {/* Your Message Field */}
-            <div className="form-group">
+            <div className={styles["form-group"]}>
               <textarea
                 id="message"
                 name="message"
                 value={formData.message}
                 onChange={handleInputChange}
                 placeholder="Your Message"
-                className="form-textarea"
+                className={styles["form-textarea"]}
                 rows="6"
                 required
+                disabled={loading}
               />
             </div>
 
-            {/* Send Message Button */}
-            <button type="submit" className="send-message-btn">
+            {loading && <div className={styles.loader} ><BeatLoader color="#1D2F5D" size={7} /></div>}
+            
+
+            <button type="submit" className={styles["send-message-btn"]} disabled={loading}>
               Send Message
             </button>
           </form>
 
-          {/* Track Application Button */}
           <button 
-            className="track-application-btn"
+            className={styles["track-application-btn"]}
             onClick={handleTrackApplication}
           >
             Track Application
           </button>
+
         </div>
       </div>
     </div>

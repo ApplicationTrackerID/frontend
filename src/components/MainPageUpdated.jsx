@@ -1,31 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import {  useNavigate } from 'react-router-dom';
 import './MainPageNew.css';
+import { jwtDecode } from 'jwt-decode';
+import { BeatLoader } from 'react-spinners';
+
+
+const isTokenValid = (token) => {
+  try {
+    const decoded = jwtDecode(token);
+    return decoded.exp * 1000 > Date.now(); // expiration time is in seconds
+  } catch (e) {
+    console.error('Error decoding token:', e);
+    return false;
+  }
+};  
 
 const MainPage = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
+  const [editLoading, setEditLoading] = useState(false);
 
-  
-  // Get user data from localStorage
-  // const getUserData = () => {
-  //   const storedData = localStorage.getItem('userData');
-  //   if (storedData) {
-  //     return JSON.parse(storedData);
-  //   }
-  //   // If no data, redirect to login
-  //   navigate('/login');
-  //   return null;
-  // };
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
         // Assume you stored user ID or username from login
         const token = localStorage.getItem('token');
-        if (!token) {
+        if (!token || !isTokenValid(token)) {
           navigate('/');
-          return;
         }
 
         const response = await fetch(`${import.meta.env.VITE_BACKEND_URL}/user/me`, {
@@ -36,7 +38,10 @@ const MainPage = () => {
         const data = await response.json();
 
         if (data) {
-          console.log("data:",data)
+          if(data.detail === "Invalid token"){
+            navigate('/');
+            return;
+          }
           setUserData(data);
         } else {
           // setError(data.detail || 'Failed to fetch user data');
@@ -59,6 +64,8 @@ const MainPage = () => {
   const [serviceDetails,setServiceDetails] = useState({})
   const [originalUserInfo, setOriginalUserInfo] = useState({});
   const [progressSteps, setProgressSteps] = useState([])
+  const [editMode, setEditMode] = useState(false);
+  const [message, setMessage] = useState('');
 
 
   useEffect(() => {
@@ -131,82 +138,21 @@ const MainPage = () => {
   }, [userData]);
 
 
+  useEffect(() => {
+    if (message) {
+      const timer = setTimeout(() => {
+        setMessage('');
+      }, 3000); // 3 seconds
+  
+      return () => clearTimeout(timer); // Cleanup on unmount or message change
+    }
+  }, [message]);
 
 
-  // const [userInfo, setUserInfo] = useState({
-  //   fullName: userDetails.full_name,
-  //   primaryEmail: userDetails.primary_email || '',
-  //   alternativeEmail: userDetails.alternative_email || '',
-  //   contactNumber: userDetails.contact_number || '',
-  //   alternativeContact: userDetails.alternative_contact || ''
-  // });
-
-  // const [applicationDetails] = useState({
-  //   nationality: userDetails.nationality || '',
-  //   passportNumber: userDetails.passport_number || '',
-  //   passportExpiry: userDetails.passport_expiry || '',
-  //   passportType: userDetails.passport_type || '',
-  //   applicationReference: userDetails.application_reference || ''
-  // });
-
-  // const [serviceDetails] = useState({
-  //   servicePackage: userDetails.service_package || '',
-  //   category: userDetails.category || ''
-  // });
-
-  const [editMode, setEditMode] = useState(false);
-  const [message, setMessage] = useState('');
-
-
-  // Map progress data from API to progress steps
-  // const [progressSteps] = useState([
-  //   { 
-  //     name: 'Submission of documents', 
-  //     status: progressData.submission_of_documents_status || 'Not started', 
-  //     details: progressData.submission_of_documents_details || '' 
-  //   },
-  //   { 
-  //     name: 'Internal assessment', 
-  //     status: progressData.internal_assessment_status || 'Not started', 
-  //     details: progressData.internal_assessment_details || '' 
-  //   },
-  //   { 
-  //     name: 'Third-party verification', 
-  //     status: progressData.third_party_verification_status || 'Not started', 
-  //     details: progressData.third_party_verification_details || '' 
-  //   },
-  //   { 
-  //     name: 'Work permit application', 
-  //     status: progressData.work_permit_application_status || 'Not started', 
-  //     details: progressData.work_permit_application_details || '' 
-  //   },
-  //   { 
-  //     name: 'Visa application', 
-  //     status: progressData.visa_application_status || 'Not started', 
-  //     details: progressData.visa_application_details || '' 
-  //   },
-  //   { 
-  //     name: 'Visa interview appointment', 
-  //     status: progressData.visa_interview_appointment_status || 'Not started', 
-  //     details: progressData.visa_interview_appointment_details || '' 
-  //   },
-  //   { 
-  //     name: 'Visa decision', 
-  //     status: progressData.visa_decision_status || 'Not started', 
-  //     details: progressData.visa_decision_details || '' 
-  //   },
-  //   { 
-  //     name: 'Application closure', 
-  //     status: progressData.application_closure_status || 'Not started', 
-  //     details: progressData.application_closure_details || '' 
-  //   }
-  // ]);
 
   const handleEdit = () => {
     if (!editMode) {
       // Store original values when entering edit mode
-      // console.log("userdetails:",userDetails)
-
       setOriginalUserInfo({ ...userInfo });
     }
     setEditMode(true);
@@ -216,10 +162,11 @@ const MainPage = () => {
     // Save logic here - will connect to API later
     try{
       const token = localStorage.getItem('token');
-        if (!token) {
-          navigate('/');
+        if (!token || !isTokenValid(token)) {
+          navigate('/login', { state: { message: "Session expired. Please Login again." } });
           return;
         }
+        setEditLoading(true);
     const data = {
       full_name: userInfo.fullName,
       primary_email: userInfo.primaryEmail,
@@ -239,13 +186,16 @@ const MainPage = () => {
     const result = await response.json();
     console.log(result)
     if (result.message){
-      setMessage(result.message);
+      setMessage('Saved');
     }
     console.log('Saving user info:', userInfo);
     setEditMode(false);
     setOriginalUserInfo({ ...userInfo });
   }catch(err){
     console.log("error:",err)
+  }
+  finally{
+    setEditLoading(false);
   }
 }
 
@@ -264,6 +214,10 @@ const MainPage = () => {
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setUserInfo((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleContactUs = () => {
+    navigate('/contact-us');
   };
 
   const getStatusClass = (status) => {
@@ -308,12 +262,8 @@ const MainPage = () => {
     }
   };
 
-  // If no user data, don't render anything (will redirect to login)
-  // if (!userData) {
-  //   return null;
-  // }
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className='loading'><BeatLoader color='#1D2F5D'/></div>;
 
   return (
     <div className="main-page">
@@ -324,10 +274,10 @@ const MainPage = () => {
           alt="Immigration Portal Logo" 
           className="logo"
         />
-        <div className="navbar-right">
+        {/* <div className="navbar-right">
           <span className="username">{userInfo.username || 'User'}</span>
           <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div>
+        </div> */}
       </div>
 
       {/* User Information Section */}
@@ -397,7 +347,7 @@ const MainPage = () => {
           </div>
           <div className="button-group">
             {!editMode ? (
-              <>
+              <div className='edit'>
               <button className="edit-button" onClick={handleEdit}>
                 Edit
               </button>
@@ -406,8 +356,8 @@ const MainPage = () => {
               {message}
             </div>
           )}
-              </>
-            ) : (
+              </div>
+            ) : !editLoading ? (
               <>
                 <button className="save-button" onClick={handleSave}>
                   Save
@@ -417,7 +367,9 @@ const MainPage = () => {
                 </button>
 
               </>
-            )}
+            ) :
+              <div className='saving'><span>Saving</span><BeatLoader size={7} color='#1D2F5D'/></div>
+            }
           </div>
         </div>
         
@@ -555,6 +507,11 @@ const MainPage = () => {
           ))}
         </div>
       </div>
+
+      <footer>
+      <button className="logout-button" onClick={handleLogout}>Logout</button>
+      <button className='contact-us' onClick={handleContactUs}>Contact Us</button>
+      </footer>
     </div>
   );
 };

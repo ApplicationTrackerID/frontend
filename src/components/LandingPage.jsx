@@ -1,28 +1,9 @@
-import {React, useEffect} from 'react';
+import {React} from 'react';
 import { useNavigate } from 'react-router-dom';
-import './LandingPage.css';
-import { jwtDecode } from 'jwt-decode';
-
-
-const isTokenValid = (token) => {
-  try {
-    const decoded = jwtDecode(token);
-    return decoded.exp * 1000 > Date.now(); // expiration time is in seconds
-  } catch (e) {
-    console.error('Error decoding token:', e);
-    return false;
-  }
-};
+import styles from './LandingPage.module.css';
 
 const LandingPage = () => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token && isTokenValid(token)) {
-      navigate('/home');
-    }
-  }, [navigate]);
 
 
   const handleTrackApplication = () => {
@@ -32,21 +13,22 @@ const LandingPage = () => {
   const handleLearnMore = () => {
     navigate('/service-details');
   };
+  
 
   return (
-    <div className="landing-page">
-      <div className="landing-content">
+    <div className={styles["landing-page"]}>
+      <div className={styles["landing-content"]}>
         {/* Logo - replace src with your actual logo path */}
-        <div className="logo-container">
+        <div className={styles["logo-container"]}>
           <img 
             src="/logo_full.png" 
             alt="Immigration Portal Logo" 
-            className="logo"
+            className={styles["logo"]}
           />
         </div>
 
         {/* Site description */}
-        <div className="description">
+        <div className={styles["description"]}>
           <p>
             A centralized platform for tracking multi-departmental applications—trusted by institutions, employers, legal firms, and government agencies for secure, transparent, and structured case management.
           </p>
@@ -54,7 +36,7 @@ const LandingPage = () => {
 
         {/* Track Application Button */}
         <button 
-          className="track-application-btn"
+          className={styles["track-application-btn"]}
           onClick={handleTrackApplication}
         >
           Track Application
@@ -62,7 +44,7 @@ const LandingPage = () => {
 
         {/* Learn More Link */}
         <button 
-          className="learn-more-link"
+          className={styles["learn-more-link"]}
           onClick={handleLearnMore}
         >
           Learn more
