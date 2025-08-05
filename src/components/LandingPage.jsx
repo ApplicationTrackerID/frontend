@@ -19,16 +19,22 @@ const LandingPage = () => {
     <div className={styles["landing-page"]}>
       <div className={styles["landing-content"]}>
         {/* Logo - replace src with your actual logo path */}
-        <div className={styles["logo-container"]}>
+        {/* <div className={styles["logo-container"]}>
           <img 
             src="/logo_full.png" 
             alt="Immigration Portal Logo" 
             className={styles["logo"]}
           />
-        </div>
+        </div> */}
+        <img 
+            src="/logo_full.png" 
+            alt="Immigration Portal Logo" 
+            className={styles["logo"]}
+          />
 
         {/* Site description */}
         <div className={styles["description"]}>
+        
           <p>
             A centralized platform for tracking multi-departmental applications—trusted by institutions, employers, legal firms, and government agencies for secure, transparent, and structured case management.
           </p>

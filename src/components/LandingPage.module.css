@@ -18,20 +18,25 @@
   width: 100%;
 }
 
-/* Logo Container */
-/* .logo-container {
-  margin-bottom: 40px;
-} */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 .logo {
-  max-width: 340px;
-  height: auto;
+  min-width: 390px;
+  height: auto;;
   width: 100%;
 }
 
 /* Description */
 .description {
   margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .description p {
@@ -124,7 +129,7 @@
   }
   
   .logo {
-    max-width: 300px;
+    max-width: 700px;
   }
   
   .description {

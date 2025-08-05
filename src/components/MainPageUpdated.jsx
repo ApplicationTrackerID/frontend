@@ -274,10 +274,9 @@ const MainPage = () => {
           alt="Immigration Portal Logo" 
           className="logo"
         />
-        {/* <div className="navbar-right">
-          <span className="username">{userInfo.username || 'User'}</span>
+        <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
-        </div> */}
+        </div>
       </div>
 
       {/* User Information Section */}
@@ -509,7 +508,7 @@ const MainPage = () => {
       </div>
 
       <footer>
-      <button className="logout-button" onClick={handleLogout}>Logout</button>
+      {/* <button className="logout-button" onClick={handleLogout}>Logout</button> */}
       <button className='contact-us' onClick={handleContactUs}>Contact Us</button>
       </footer>
     </div>

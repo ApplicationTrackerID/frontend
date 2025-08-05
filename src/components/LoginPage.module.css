@@ -228,9 +228,15 @@
 
 /* Logo styling */
 .logo {
-  width: 350px;
-  margin-bottom: 30px;
+  min-width: 350px;
   user-select: none;
+  height: auto;
+}
+
+.logoContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Form styling */
@@ -350,8 +356,13 @@
 /* Responsive tweaks */
 @media (max-width: 480px) {
   .logo {
-    width: 300px;
-    margin-bottom: 20px;
+    min-width: 400px;
+  }
+
+  .logoContainer{
+
+    margin-top: 150px;
+  
   }
 
   .input {

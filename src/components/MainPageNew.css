@@ -2,7 +2,8 @@
 .main-page {
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  /* min-height: 100vh; */
+  overflow: visible;
 }
 
 .loading{
@@ -33,15 +34,19 @@
 .navbar {
   background-color: #1D2F5D;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 10px;
   color: #ffffff;
+  top: 0;
+  position: sticky;
+  z-index: 4;
 }
 
 .navbar .logo {
-  max-width: 250px;
+  min-width: 300px;
   height: auto;
+  width: 100%;
 }
 
 .navbar-right {

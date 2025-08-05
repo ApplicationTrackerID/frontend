@@ -12,11 +12,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: sticky;
+  top: 0;
 }
 
 .header-content {
   max-width: 1200px;
   width: 100%;
+
 }
 
 .header-section .logo-container {
@@ -25,7 +28,7 @@
 }
 
 .header-section .logo {
-  max-width: 250px;
+  max-width: 390px;
   height: auto;
   width: 100%;
 }

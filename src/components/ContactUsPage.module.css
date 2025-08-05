@@ -16,7 +16,7 @@
 /* Header Section */
 .header-section {
   background-color: #1D2F5D;
-  padding: 20px;
+  /* padding: 20px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +44,7 @@
 }
 
 .header-section .logo {
-  max-width: 250px;
+  max-width: 390;
   height: auto;
   width: 100%;
 }

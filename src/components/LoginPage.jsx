@@ -340,7 +340,9 @@ export default function LoginPage() {
       />
 
       <div className={`${styles.overlay} ${animateDone ? styles.overlayVisible : ''}`}>
+        <div className={styles.logoContainer}>
         <img src={'/logo_full_blue.png'} alt="Logo" className={styles.logo} onClick={handleLogoClick}/>
+        </div>
         <form className={styles.loginForm} onSubmit={handleLogin} noValidate>
           <input
             type="text"
