@@ -220,6 +220,10 @@ const MainPage = () => {
     navigate('/contact-us');
   };
 
+  const handleLogoClick = () => {
+    navigate('/')
+  }
+
   const getStatusClass = (status) => {
     switch (status.toLowerCase()) {
       case 'complete':
@@ -273,6 +277,7 @@ const MainPage = () => {
           src="/logo_full.png" 
           alt="Immigration Portal Logo" 
           className="logo"
+          onClick={handleLogoClick}
         />
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
