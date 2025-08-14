@@ -3,6 +3,8 @@ import {  useNavigate } from 'react-router-dom';
 import './MainPageNew.css';
 import { jwtDecode } from 'jwt-decode';
 import { BeatLoader } from 'react-spinners';
+import Navbar from './Navbar';
+import FloatingActionButton from "./FloatingActionButton";
 
 
 const isTokenValid = (token) => {
@@ -109,10 +111,16 @@ const MainPage = () => {
         details: progressData.third_party_verification_details || '' 
       },
       { 
+        name: 'Biometrics', 
+        status: progressData.biometrics_status || 'Not started', 
+        details: progressData.biometrics_details || '' 
+      },
+      { 
         name: 'Work permit application', 
         status: progressData.work_permit_application_status || 'Not started', 
         details: progressData.work_permit_application_details || '' 
       },
+     
       { 
         name: 'Visa application', 
         status: progressData.visa_application_status || 'Not started', 
@@ -163,8 +171,13 @@ const MainPage = () => {
     try{
       const token = localStorage.getItem('token');
         if (!token || !isTokenValid(token)) {
-          navigate('/login', { state: { message: "Session expired. Please Login again." } });
-          return;
+          try{
+            localStorage.removeItem('token');
+          }
+          finally{
+            navigate('/login', { state: { message: "Session expired. Please Login again." } });
+            return;
+          }
         }
         setEditLoading(true);
     const data = {
@@ -208,7 +221,7 @@ const MainPage = () => {
   const handleLogout = () => {
     // Clear user data from localStorage
     localStorage.removeItem('token');
-    navigate('/');
+    navigate('/logout');
   };
 
   const handleInputChange = (e) => {
@@ -220,9 +233,6 @@ const MainPage = () => {
     navigate('/contact-us');
   };
 
-  const handleLogoClick = () => {
-    navigate('/')
-  }
 
   const getStatusClass = (status) => {
     switch (status.toLowerCase()) {
@@ -272,7 +282,7 @@ const MainPage = () => {
   return (
     <div className="main-page">
       {/* Navbar */}
-      <div className="navbar">
+      {/* <div className="navbar">
         <img 
           src="/logo_full.png" 
           alt="Immigration Portal Logo" 
@@ -282,10 +292,12 @@ const MainPage = () => {
         <div className="navbar-right">
           <button className="logout-button" onClick={handleLogout}>Logout</button>
         </div>
-      </div>
-
+      </div> */}
+      <Navbar />
+      <FloatingActionButton onClick={handleLogout} />
       {/* User Information Section */}
       <div className="user-info-section">
+        
         {/* User Details Subsection */}
         <div className="subsection user-details">
           {/* <h3>Personal Information</h3> */}
@@ -484,19 +496,24 @@ const MainPage = () => {
         <div className="progress-trail">
           {progressSteps.map((step, index) => (
             <div key={index} className="progress-step">
-              <div className="step-container">
-                <div className="step-icon-container">
-                  <div className={`step-icon ${getStatusClass(step.status)}`}>
+              <div className="step-icon-container">
+              <div className={`step-icon ${getStatusClass(step.status)}`}>
                     {getStatusIcon(step.status)}
                   </div>
-                </div>
-                <div className="step-content">
+                  </div>
+              <div className="step-container">
+                {/* <div className="step-icon-container"> */}
+                  
+                {/* </div> */}
+                
+                <div className="step-content">             
                   <div className="step-header">
                     <h4>{step.name}</h4>
                     <span className={`status ${getStatusClass(step.status)}`}>
                       {step.status}
                     </span>
                   </div>
+                  {step.status !== 'Not started' && step.status !== 'Not Applicable' ? 
                   <div className="step-details">
                     <textarea
                       placeholder="No details available at this time."
@@ -505,6 +522,8 @@ const MainPage = () => {
                       rows="3"
                     />
                   </div>
+                  : ''
+                  }
                 </div>
               </div>
             </div>

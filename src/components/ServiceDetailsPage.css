@@ -1,6 +1,6 @@
 /* Mobile-first design for Service Details Page */
 .service-details-page {
-  min-height: 100vh;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
 }
@@ -8,7 +8,7 @@
 /* Header Section */
 .header-section {
   background-color: #1D2F5D;
-  padding-top: 20px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,10 +25,11 @@
 .header-section .logo-container {
   display: flex;
   justify-content: center;
+  padding: 20px;
 }
 
 .header-section .logo {
-  max-width: 390px;
+  max-width: 310px;
   height: auto;
   width: 100%;
 }
@@ -147,11 +148,12 @@
 /* Desktop styles */
 @media (min-width: 1024px) {
   .header-section {
-    padding: 40px 60px;
+    padding: 0px 60px;
   }
   
   .header-section .logo {
-    max-width: 250px;
+    max-width: 400px;
+    cursor: pointer;
   }
   
   .main-section {

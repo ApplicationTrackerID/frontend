@@ -202,7 +202,7 @@
 
 /* After animation: zoom in and fade */
 .bgImageZoomed {
-  transform: translate(-50%, -50%) scale(1.5);
+  transform: translate(-70%, -50%) scale(3.17);
   opacity: 0.2;
 }
 
@@ -228,7 +228,7 @@
 
 /* Logo styling */
 .logo {
-  min-width: 350px;
+  max-width: 310px;
   user-select: none;
   height: auto;
 }
@@ -237,6 +237,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 180px;
+  margin-bottom: 25px;
 }
 
 /* Form styling */
@@ -259,7 +261,7 @@
   border: 1px solid #bbb;      /* subtle grey border */
   color: #eee;                /* light text on dark bg */
   padding: 10px 12px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   border-radius: 3px;
   outline: none;
   transition: border-color 0.3s ease;
@@ -335,7 +337,6 @@
 /* Contact Us link below button */
 .contactLink {
   /* display: block; */
-  margin-top: 12px;
   font-size: 0.9rem;
   color: #999;
   border: none;
@@ -343,6 +344,7 @@
   text-decoration: none;
   user-select: none;
   transition: color 0.3s ease;
+  margin-top: 30px;
 }
 
 .contactLink:hover,
@@ -353,26 +355,28 @@
 }
 
 
-/* Responsive tweaks */
-@media (max-width: 480px) {
+@media (min-width: 1024px) {
   .logo {
-    min-width: 400px;
+    max-width: 500px;
   }
 
-  .logoContainer{
+  .contactLink {
+    margin-top: 12px;
+  }
 
-    margin-top: 150px;
-  
+
+  .logoContainer{
+    margin-top: 30px;
   }
 
   .input {
-    font-size: 0.9rem;
+    font-size: 1rem;
   }
 
   .button {
     font-size: 1rem;
   }
   .bgImageZoomed {
-    transform: translate(-70%, -50%) scale(3.17);
+    transform: translate(-50%, -50%) scale(1.5);
   }
 }

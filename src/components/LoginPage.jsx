@@ -341,7 +341,7 @@ export default function LoginPage() {
 
       <div className={`${styles.overlay} ${animateDone ? styles.overlayVisible : ''}`}>
         <div className={styles.logoContainer}>
-        <img src={'/logo_full_blue.png'} alt="Logo" className={styles.logo} onClick={handleLogoClick}/>
+        <img src={'/logo_full_blue1-cropped.svg'} alt="Logo" className={styles.logo} onClick={handleLogoClick}/>
         </div>
         <form className={styles.loginForm} onSubmit={handleLogin} noValidate>
           <input
@@ -387,10 +387,10 @@ export default function LoginPage() {
           {error && <p className={styles.errorMessage}>{error}</p>}
           
          
+        </form>
           <button className={styles.contactLink} onClick={handleContactUs}>
            Contact Us
           </button>
-        </form>
       </div>
     </div>
   );

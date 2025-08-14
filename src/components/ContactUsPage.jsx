@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styles from './ContactUsPage.module.css';
 import { BeatLoader } from 'react-spinners';
+import Navbar from './Navbar';
+
 
 const ContactUsPage = () => {
   const navigate = useNavigate();
@@ -12,9 +14,10 @@ const ContactUsPage = () => {
   });
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
   // const [error, setError] = useState('');
 
-
+  // console.log('success', success)
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -43,7 +46,8 @@ const ContactUsPage = () => {
     const result = await response.json();
     console.log(result)
     if (result.message){
-      setMessage('Message sent');
+      setMessage('Thank you for contacting ApplicationTracker.ID.\nYour message has been sent successfully.');
+      setSuccess(true);
     }
     console.log('Sending message:', formData);
   }catch{
@@ -58,29 +62,28 @@ const ContactUsPage = () => {
     navigate('/login');
   };
 
-  const handleLogoClick = () => {
-    navigate('/')
-  }
 
   return (
     <div className={styles["contact-us-page"]}>
       {/* Header Section */}
-      <div className={styles["header-section"]}>
+      {/* <div className={styles["header-section"]}>
         <div className={styles["header-content"]}>
           <div className={styles["logo-container"]} onClick={handleLogoClick}>
             <img 
-              src="/logo_full.png" 
+              src="/logo_full (3)-cropped.svg" 
               alt="Immigration Portal Logo" 
               className={styles["logo"]}
             />
           </div>
         </div>
-      </div>
-
+      </div> */}
+      
+      <Navbar />
+      
       {/* Main Section */}
       <div className={styles["main-section"]}>
         <div className={styles["main-content"]}>
-          
+          {!success ? (
           <form className={styles["contact-form"]} onSubmit={handleSendMessage}>
             {/* Your Name Field */}
             {message && (
@@ -139,7 +142,9 @@ const ContactUsPage = () => {
               Send Message
             </button>
           </form>
-
+          ): <div className={styles["message"]}>
+          {message}
+        </div>}
           <button 
             className={styles["track-application-btn"]}
             onClick={handleTrackApplication}

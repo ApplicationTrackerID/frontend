@@ -17,6 +17,13 @@ const LandingPage = () => {
 
   return (
     <div className={styles["landing-page"]}>
+<div className={styles['logo-container']}>
+<img 
+            src="/logo_full (3)-cropped.svg" 
+            alt="Immigration Portal Logo" 
+            className={styles["logo"]}
+          />
+          </div>
       <div className={styles["landing-content"]}>
         {/* Logo - replace src with your actual logo path */}
         {/* <div className={styles["logo-container"]}>
@@ -26,11 +33,7 @@ const LandingPage = () => {
             className={styles["logo"]}
           />
         </div> */}
-        <img 
-            src="/logo_full.png" 
-            alt="Immigration Portal Logo" 
-            className={styles["logo"]}
-          />
+        
 
         {/* Site description */}
         <div className={styles["description"]}>

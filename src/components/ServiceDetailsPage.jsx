@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './ServiceDetailsPage.css';
+import Navbar from './Navbar';
+
 
 const ServiceDetailsPage = () => {
   const navigate = useNavigate();
@@ -13,24 +15,23 @@ const ServiceDetailsPage = () => {
     navigate('/contact-us');
   };
 
-  const handleLogoClick = () => {
-    navigate('/')
-  }
 
   return (
     <div className="service-details-page">
       {/* Header Section */}
-      <div className="header-section">
+      {/* <div className="header-section">
         <div className="header-content">
           <div className="logo-container" onClick={handleLogoClick}>
             <img 
-              src="/logo_full.png" 
+              src="/logo_full (3)-cropped.svg" 
               alt="Immigration Portal Logo" 
               className="logo"
             />
           </div>
         </div>
-      </div>
+      </div> */}
+
+      <Navbar />
 
       {/* Main Section */}
       <div className="main-section">

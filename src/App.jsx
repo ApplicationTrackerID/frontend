@@ -6,6 +6,7 @@ import ServiceDetailsPage from './components/ServiceDetailsPage'
 import ContactUsPage from './components/ContactUsPage'
 import './App.css'
 import MainPage from './components/MainPageUpdated'
+import LogoutScreen from './components/LogoutSplashScreen'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/service-details" element={<ServiceDetailsPage />} />
           <Route path="/contact-us" element={<ContactUsPage />} />
           <Route path="/home" element={<MainPage />} />
+          <Route path="/logout" element={<LogoutScreen />} />
         </Routes>
       </Router>
     </div>

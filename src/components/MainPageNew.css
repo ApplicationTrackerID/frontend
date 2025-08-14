@@ -59,13 +59,9 @@
 }
 
 .message {
-  background-color: #d7f8f8;
-  color: #1c725e;
-  border: 1px solid #61c4b2;
-  border-radius: 4px;
   padding: 12px;
   /* margin-bottom: 20px; */
-  font-size: 9px;
+  font-size: 15px;
   text-align: center;
 }
 
@@ -159,6 +155,7 @@
   max-width: 800px;
   margin-top: 20px;
   position: relative;
+  /* display: none; */
 }
 
 /* Vertical connecting line */
@@ -180,27 +177,15 @@
   position: relative;
 } */
 
-.progress-step::before {
-  content: "";
-  position: absolute;
-  left: 24px;
-  top: 0;
-  bottom: 170px; /* extend below each step */
-  width: 2px;
-  background-color: #ddd;
-  z-index: 1;
+.progress-step{
+  display: flex;
+  align-items: center;
 }
 
-.progress-step:last-child::before {
-  display: none;
-}
-
-.progress-step:last-child .progress-trail::before {
-  display: none;
-}
 
 .step-container {
   display: flex;
+  
   align-items: flex-start;
   width: 100%;
 }
@@ -216,6 +201,7 @@
   justify-content: center;
   border-radius: 50%;
   margin-right: 20px;
+  margin-bottom: 5%;
 }
 
 .step-icon {
@@ -261,9 +247,12 @@
 }
 
 .step-content {
+  /* display: flex;
+  gap: 10%; */
   flex-grow: 1;
   background: #f8f9fa;
-  padding: 20px;
+  padding: 20px 10px;
+
   border: 1px solid #e9ecef;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);

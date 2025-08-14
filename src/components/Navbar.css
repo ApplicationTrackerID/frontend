@@ -1,0 +1,40 @@
+.navbar-logo{
+    width: 250px;
+    height: auto;  
+    padding: 6% 0%; 
+}
+
+.navbar-toggler{
+    margin-top: 15px;
+    border: none;
+}
+
+.navbar-nav .nav-link.active {
+  text-decoration: underline;  
+}
+
+  
+@media (min-width: 1024px) {
+
+    .navbar .container-fluid{
+      display: flex;
+      /* gap: 60%; */
+    }
+
+    .navbar-toggler{
+      padding-right: 150px;
+    }
+
+    .navbar .navbar-brand{
+      margin-right: 28%;
+    }
+
+}
+
+@media (max-width: 360px) {
+
+  .navbar .container-fluid{
+    margin-right: 0px !important;
+  }
+
+}
